@@ -7,18 +7,19 @@ import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapred.*;
 import org.apache.hadoop.util.*;
 
-public class WordCount {
+public class FirstLetterCount {
     public static class Map extends MapReduceBase implements Mapper<LongWritable, Text, Text, IntWritable> {
         private final static IntWritable one = new IntWritable(1);
         private Text word = new Text();
 	    
         public void map(LongWritable key, Text value, OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
             String line = value.toString();
-            StringTokenizer tokenizer = new StringTokenizer(line);
-            while (tokenizer.hasMoreTokens()) {
-                word.set(tokenizer.nextToken());
+            // StringTokenizer tokenizer = new StringTokenizer(line);
+            Character firstLetter = line.charAt(0);
+            // while (tokenizer.hasMoreTokens()) {
+                word.set(firstLetter);
                 output.collect(word, one);
-            }
+            // }
         }
     }
 	
@@ -33,8 +34,8 @@ public class WordCount {
     }
 	
     public static void main(String[] args) throws Exception {
-        JobConf conf = new JobConf(WordCount.class);
-        conf.setJobName("wordcount");
+        JobConf conf = new JobConf(FirstLetterCount.class);
+        conf.setJobName("firstlettercount");
 	    
         conf.setOutputKeyClass(Text.class);
         conf.setOutputValueClass(IntWritable.class);
