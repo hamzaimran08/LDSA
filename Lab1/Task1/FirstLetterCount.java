@@ -18,7 +18,7 @@ public class FirstLetterCount {
             String firstLetter = line.substring(0, 1);
             // while (tokenizer.hasMoreTokens()) {
                 word.set(firstLetter);
-                output.collect(firstLetter, one);
+                output.collect(word, one);
             // }
         }
     }
