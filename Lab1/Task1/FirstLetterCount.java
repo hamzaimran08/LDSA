@@ -15,9 +15,9 @@ public class FirstLetterCount {
         public void map(LongWritable key, Text value, OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
             String line = value.toString();
             // StringTokenizer tokenizer = new StringTokenizer(line);
-            String firstLetter = line.charAt(0);
+            String firstLetter = line.substring(0, 1);
             // while (tokenizer.hasMoreTokens()) {
-                // word.set(firstLetter);
+                word.set(firstLetter);
                 output.collect(firstLetter, one);
             // }
         }
