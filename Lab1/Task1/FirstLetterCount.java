@@ -14,14 +14,13 @@ public class FirstLetterCount {
 	    
         public void map(LongWritable key, Text value, OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
             String line = value.toString();
-            // StringTokenizer tokenizer = new StringTokenizer(line);
-            if(line.length() > 0) {
-            String firstLetter = line.substring(0, 1);
-            // while (tokenizer.hasMoreTokens()) {
-                word.set(firstLetter);
+            StringTokenizer tokenizer = new StringTokenizer(line);
+             while (tokenizer.hasMoreTokens()) {
+                Charatcer
+                word.set(tokenizer.nextToken().substring(0,1).toLowerCase());
                 output.collect(word, one);
             }
-            // }
+
         }
     }
 	
