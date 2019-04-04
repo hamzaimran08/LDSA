@@ -15,12 +15,10 @@ public class FirstLetterCount {
         public void map(LongWritable key, Text value, OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
             String line = value.toString();
             StringTokenizer tokenizer = new StringTokenizer(line);
-             while (tokenizer.hasMoreTokens()) {
-                Charatcer
+            while (tokenizer.hasMoreTokens()) {
                 word.set(tokenizer.nextToken().substring(0,1).toLowerCase());
                 output.collect(word, one);
             }
-
         }
     }
 	
